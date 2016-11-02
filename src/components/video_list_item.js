@@ -1,7 +1,9 @@
 import React from 'react';
 
 const VideoListItem = ({video}) => {
-  const imageUrl = video.snipper.thumbnails.default.src;
+  // const video = props.video;
+  const imageUrl = video.snippet.thumbnails.default.url;
+  console.log(video);
 
   return (
     <li className="list-group-item">
