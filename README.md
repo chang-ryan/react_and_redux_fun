@@ -1,6 +1,7 @@
-# ReduxSimpleStarter
+# Ryan doing ReduxSimpleStarter
 
 Interested in learning [Redux](https://www.udemy.com/react-redux/)?
+Yes! I was interested in learning React+Redux, so I took a course on it. Here's what happened in that course. -Ryan
 
 ###Getting Started###
 
