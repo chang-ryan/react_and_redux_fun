@@ -4,7 +4,7 @@ import ActiveBookReducer from './reducer_active_book';
 
 const rootReducer = combineReducers({
   books: BooksReducer,
-  activeBook: activeBook
+  activeBook: ActiveBookReducer
 });
 
 export default rootReducer;
