@@ -77,5 +77,6 @@ function validate(values) {
 export default reduxForm({
   form: 'PostsNewForm',
   fields: ['title', 'categories', 'content'],
-  validate
+  // validate: validate
+  validate // ES6 syntax for the above statement
 }, null, { createPost })(PostsNew);
