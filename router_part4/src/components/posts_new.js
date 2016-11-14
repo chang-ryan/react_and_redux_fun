@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 import { Link } from 'react-router';
 
@@ -6,6 +6,18 @@ import { createPost } from '../actions/index';
 
 
 class PostsNew extends Component {
+  static contextTypes = {
+    router: PropTypes.objects
+  };
+
+  onSubmit(props) {
+    this.props.createPost(props)
+      .then(() => {
+        // blog post has been created
+        this.context.router.push('/');
+      });
+  }
+
   render() {
     // const handleSubmit = this.props.handleSubmit;
     const { handleSubmit } = this.props; // ES6 syntax identical to above
@@ -14,23 +26,23 @@ class PostsNew extends Component {
     const { fields: { title, categories, content }} = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.props.createPost)}>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>Create a new post</h3>
-        <div className={`form-group ${title.touched && title.invalid ? 'has-danger' : ''}`}>
+        <div className={`form-group ${title.touched && title.invalid ? 'text-danger' : ''}`}>
           <label>Title</label>
           <input type="text" className="form-control" {...title} />
           <div className="text-help">
             {title.touched ? title.error : ''}
           </div>
         </div>
-        <div className={`form-group ${categories.touched && categories.invalid ? 'has-danger' : ''}`}>
+        <div className={`form-group ${categories.touched && categories.invalid ? 'text-danger' : ''}`}>
           <label>Categories</label>
           <input type="text" className="form-control" {...categories} />
           <div className="text-help">
             {categories.touched ? categories.error : ''}
           </div>
         </div>
-        <div className={`form-group ${content.touched && content.invalid ? 'has-danger' : ''}`}>
+        <div className={`form-group ${content.touched && content.invalid ? 'text-danger' : ''}`}>
           <label>Content</label>
           <textarea className="form-control" {...content} />
           <div className="text-help">
