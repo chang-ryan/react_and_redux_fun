@@ -7,13 +7,13 @@ import { createPost } from '../actions/index';
 
 class PostsNew extends Component {
   static contextTypes = {
-    router: PropTypes.objects
+    router: PropTypes.object.isRequired
   };
 
   onSubmit(props) {
     this.props.createPost(props)
       .then(() => {
-        // blog post has been created
+        // blog post has been created (201)
         this.context.router.push('/');
       });
   }
@@ -21,7 +21,6 @@ class PostsNew extends Component {
   render() {
     // const handleSubmit = this.props.handleSubmit;
     const { handleSubmit } = this.props; // ES6 syntax identical to above
-
     // const title = this.props.fields.title;
     const { fields: { title, categories, content }} = this.props;
 
